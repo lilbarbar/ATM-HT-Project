@@ -51,6 +51,7 @@ public class ATMTester {
         theBank.openAccount(email6, 180);
         theBank.audit();
 
+        System.out.println("WWW BANK");
     }
 
 }
