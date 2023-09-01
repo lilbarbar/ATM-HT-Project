@@ -18,6 +18,7 @@ public class ATM {
             if (!accounts.containsKey(userID)) {
                 if (ammount >= 1) {
                     accounts.put(userID, ammount);
+                    System.out.println(userID + ", we made your account with " + ammount + " dollars");
                 } else {
                     System.out.println("BROKE BOI GET YO MONEY UP! GET YO FUNNY UP! NO HOPS GET YO BUNNIES UP!");
                 }
@@ -36,10 +37,10 @@ public class ATM {
 
     public void closeAccount(String userID) {
         try {
-            if (accounts.compute(userID, null) == 0) {
+            if (accounts.get(userID) == 0) {
                 System.out.println(userID + ", we are closing your account");
                 accounts.remove(userID);
-            } else if (accounts.compute(userID, null) > 0) {
+            } else if (accounts.get(userID) > 0) {
                 System.out.println(userID
                         + ", you need to withdraw money and have 0 dollars in your account before you can close it.");
             } else {
@@ -52,4 +53,19 @@ public class ATM {
         }
     }
 
+    public double checkBalance(String userID) {
+        try {
+            if (accounts.containsKey(userID)) {
+                double output = accounts.get(userID);
+                return output;
+            } else {
+                System.out.println("BROKE BOI..make a valid account first...");
+                return 0.0;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Something bugging bro bro...");
+            return 0.0;
+        }
+    }
 }
