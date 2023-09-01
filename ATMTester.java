@@ -1,8 +1,9 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.io.*;
 
 public class ATMTester {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         ATM theBank = new ATM();
 
@@ -44,6 +45,11 @@ public class ATMTester {
         System.out.println(theBank.transferMoney(email4, email5, 0));
         System.out.println(theBank.transferMoney(email4, email5, 1000));
         System.out.println(theBank.transferMoney("email4", email5, 10));
+
+        theBank.audit();
+
+        theBank.openAccount(email6, 180);
+        theBank.audit();
 
     }
 

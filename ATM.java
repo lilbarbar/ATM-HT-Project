@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
-
-import javax.lang.model.util.ElementScanner6;
+import java.io.*;
 
 public class ATM {
 
@@ -159,6 +158,25 @@ public class ATM {
             System.out.println("Something's bugging bro bro...");
             return false;
         }
+    }
+
+    public void audit() throws FileNotFoundException { // credit for sentry for teaching me how to do a for each loop
+                                                       // with a Hashmap
+        try {
+            PrintWriter pw = new PrintWriter("AccountAudit.txt");
+
+            String s = "";
+            for (HashMap.Entry<String, Double> entry : accounts.entrySet()) {
+                s += entry.getKey() + " " + entry.getValue() + "\n";
+            }
+
+            pw.print(s);
+            pw.close();
+
+        } catch (Exception e) {
+
+        }
+
     }
 
 }
