@@ -124,4 +124,41 @@ public class ATM {
         }
     }
 
+    public boolean transferMoney(String fromAccount, String toAccount, double ammount) {
+        try {
+            if (accounts.containsKey(fromAccount) && accounts.containsKey(toAccount)) {
+                if (ammount > 0) {
+                    if (accounts.get(fromAccount) >= ammount) {
+                        double fromMoney = accounts.get(fromAccount);
+                        double toMoney = accounts.get(fromAccount);
+                        fromMoney -= ammount;
+                        toMoney += ammount;
+
+                        accounts.replace(fromAccount, fromMoney);
+                        accounts.replace(toAccount, toMoney);
+
+                        System.out.println("Successful tranfer!");
+                        return true;
+
+                    } else {
+                        System.out.println(fromAccount + " does not have enough dinero to transfer.");
+                        return false;
+                    }
+                } else {
+                    System.out.println("Money transferred must be positive.");
+                    return false;
+                }
+
+            } else {
+                System.out.println("Either one or both accounts are invalid.");
+                return false;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Something's bugging bro bro...");
+            return false;
+        }
+    }
+
 }

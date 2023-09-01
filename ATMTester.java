@@ -35,6 +35,16 @@ public class ATMTester {
 
         System.out.println(theBank.depositMoney(email2, 10));
 
+        System.out.println(theBank.checkBalance(email4));
+        System.out.println(theBank.checkBalance(email5));
+        System.out.println(theBank.transferMoney(email4, email5, 10));
+        System.out.println(theBank.checkBalance(email4));
+        System.out.println(theBank.checkBalance(email5));
+
+        System.out.println(theBank.transferMoney(email4, email5, 0));
+        System.out.println(theBank.transferMoney(email4, email5, 1000));
+        System.out.println(theBank.transferMoney("email4", email5, 10));
+
     }
 
 }
