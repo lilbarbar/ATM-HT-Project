@@ -69,12 +69,40 @@ public class ATM {
         }
     }
 
+    public double depositMoney(String userID, double ammount) {
+        try {
+
+            if (accounts.containsKey(userID)) {
+                if (ammount > 0) {
+                    double currentMoney = accounts.get(userID);
+                    double output = currentMoney + ammount;
+                    accounts.replace(userID, output);
+                    return output;
+                } else {
+                    System.out.println("can't deposit negative money...");
+                    return 0.0;
+                }
+
+            } else {
+                System.out.println(userID + " is not a valid account.");
+                return 0.0;
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Something bugging bro bro...");
+            return 0.0;
+        }
+
+    }
+
     public double withdrawMoney(String userID, double ammount) {
         try {
 
             if (accounts.containsKey(userID)) {
                 double currentMoney = accounts.get(userID);
-                if (currentMoney >= ammount) {
+                if (currentMoney >= ammount && ammount > 0) {
                     double output = currentMoney - ammount;
                     accounts.replace(userID, output);
                     return output;
@@ -95,4 +123,5 @@ public class ATM {
             return 0.0;
         }
     }
+
 }

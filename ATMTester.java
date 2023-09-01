@@ -33,6 +33,8 @@ public class ATMTester {
         System.out.println(theBank.checkBalance(email2));
         System.out.println(theBank.checkBalance(email6));
 
+        System.out.println(theBank.depositMoney(email2, 10));
+
     }
 
 }
